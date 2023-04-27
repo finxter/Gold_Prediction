@@ -2,7 +2,7 @@ import yfinance as yf
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-from xgboost import XGBRegressor
+from sklearn.ensemble import RandomForestRegressor
 import joblib
 import warnings
 
@@ -35,7 +35,7 @@ features = scaler.fit_transform(features)
 X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=.2, random_state=0)
 
 # define xgboost model
-model = XGBRegressor()
+model = RandomForestRegressor()
 model.fit(X_train, y_train)
 
 joblib.dump(model, 'model.pkl')

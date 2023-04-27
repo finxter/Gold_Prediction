@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import joblib
 import datetime
-from xgboost import XGBRegressor
+from sklearn.ensemble import RandomForestRegressor
 import yfinance as yf
 from sklearn.preprocessing import StandardScaler
 import warnings

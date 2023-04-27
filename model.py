@@ -23,14 +23,13 @@ df['next_day_price'] = data.Close.shift(-1)
 df = df.dropna()
 
 # define independent variable
-X = df[['weekly_mean', 'monthly_mean', 'quarterly_mean', 'yearly_mean']]
+features = df[['weekly_mean', 'monthly_mean', 'quarterly_mean', 'yearly_mean']]
 
 # define dependent variable
 target = df['next_day_price']
 
-# normalize the data
 scaler = StandardScaler()
-features = scaler.fit_transform(X)
+features = scaler.fit_transform(features)
 
 # split data into train and test
 X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=.2, random_state=0)
